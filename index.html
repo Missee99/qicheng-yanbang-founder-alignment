@@ -1,78 +1,534 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b1020" />
-  <title>栖城焱邦 · AI创业项目全景说明</title>
-  <style>
-    :root{
-      --bg:#080b14;--panel:#111726;--panel-2:#0e1422;--ink:#eef2ff;--muted:#9ca8bd;--line:#25314a;
-      --cyan:#72e3e2;--blue:#8ca8ff;--orange:#ffb86c;--pink:#ff84b8;--green:#8de5a7;
-      --shadow: 0 24px 80px rgba(0,0,0,.28);--radius:24px;--max:1200px;
-    }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(900px 520px at 76% -4%,rgba(92,95,255,.22),transparent 58%),radial-gradient(700px 450px at -10% 20%,rgba(41,190,200,.14),transparent 60%),var(--bg);color:var(--ink);font-family:Inter,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.65}
-    a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 48px),var(--max));margin:auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(8,11,20,.76);backdrop-filter:blur(18px);border-bottom:1px solid rgba(123,143,190,.15)}
-    .topbar-inner{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.03em}.mark{width:30px;height:30px;border-radius:10px;background:linear-gradient(140deg,var(--cyan),var(--blue) 55%,var(--pink));box-shadow:0 0 0 5px rgba(114,227,226,.08),0 8px 24px rgba(114,227,226,.18)}
-    .brand small{display:block;color:var(--muted);font-weight:500;font-size:11px;letter-spacing:.12em;margin-top:-3px}.nav{display:flex;gap:8px;align-items:center}.nav a{padding:9px 13px;border-radius:12px;color:var(--muted);font-size:13px}.nav a:hover,.nav a.active{color:var(--ink);background:rgba(140,168,255,.12)}.nav-cta{border:1px solid rgba(114,227,226,.38)!important;color:var(--cyan)!important}
-    .hero{padding:92px 0 78px;position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:70px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--cyan);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.eyebrow::before{content:"";width:26px;height:1px;background:var(--cyan)}h1{font-size:clamp(42px,5.4vw,72px);line-height:1.07;letter-spacing:-.055em;margin:20px 0 24px;max-width:760px}h1 em{font-style:normal;color:var(--cyan)}.hero-lead{font-size:20px;color:#cdd6e9;max-width:690px;margin:0 0 30px}.hero-lead strong{color:var(--ink)}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:14px;border:1px solid var(--line);font-weight:700;font-size:14px;transition:.2s}.btn.primary{background:var(--cyan);color:#061117;border-color:var(--cyan);box-shadow:0 10px 30px rgba(114,227,226,.2)}.btn.secondary{background:rgba(255,255,255,.03);color:var(--ink)}.btn:hover{transform:translateY(-2px)}
-    .hero-card{background:linear-gradient(155deg,rgba(20,31,56,.92),rgba(12,17,31,.94));border:1px solid rgba(140,168,255,.25);border-radius:30px;padding:28px;box-shadow:var(--shadow);position:relative}.hero-card::after{content:"";position:absolute;inset:-1px;border-radius:30px;padding:1px;background:linear-gradient(135deg,rgba(114,227,226,.58),transparent 35%,rgba(255,132,184,.34));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}.card-kicker{color:var(--muted);font-size:12px;letter-spacing:.1em}.hero-card h3{font-size:27px;margin:16px 0 14px;line-height:1.25}.hero-card p{color:#c0cce0;margin:0 0 18px}.signal{display:flex;gap:10px;flex-wrap:wrap}.pill{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);padding:8px 10px;border-radius:999px;font-size:12px;color:#d8e1f1}.hero-note{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:var(--muted)}
-    section{padding:88px 0;border-top:1px solid rgba(123,143,190,.14)}.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:36px}.kicker{font-size:12px;color:var(--cyan);letter-spacing:.14em;font-weight:800}.section-head h2{font-size:clamp(30px,4vw,50px);line-height:1.12;letter-spacing:-.04em;margin:10px 0 0}.section-head p{max-width:480px;color:var(--muted);margin:0}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.panel{background:linear-gradient(160deg,rgba(19,28,47,.82),rgba(12,17,30,.8));border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 18px 60px rgba(0,0,0,.16)}.panel h3{font-size:21px;margin:0 0 11px}.panel p{color:var(--muted);margin:0}.tag{font-size:11px;letter-spacing:.08em;color:var(--cyan);font-weight:800;margin-bottom:14px}.accent-cyan{border-color:rgba(114,227,226,.34)}.accent-orange{border-color:rgba(255,184,108,.3)}.accent-pink{border-color:rgba(255,132,184,.3)}
-    .mission{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;align-items:stretch}.quote{font-size:30px;line-height:1.28;letter-spacing:-.035em;margin:0}.quote em{font-style:normal;color:var(--orange)}.list{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:12px}.list li{display:flex;gap:10px;color:#cad4e6}.list li::before{content:"↗";color:var(--cyan);font-weight:800}
-    .business-map{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:stretch}.business-card{min-height:270px;position:relative;overflow:hidden}.business-card::before{content:"";position:absolute;width:190px;height:190px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(114,227,226,.18),transparent 70%)}.business-card.orange::before{background:radial-gradient(circle,rgba(255,184,108,.18),transparent 70%)}.business-card.pink::before{background:radial-gradient(circle,rgba(255,132,184,.18),transparent 70%)}.number{font-size:54px;color:rgba(255,255,255,.12);font-weight:800;position:absolute;right:22px;bottom:10px}.business-card h3{font-size:25px;max-width:240px}.business-card .meta{color:var(--ink);font-weight:700;margin:13px 0}.business-card ul{padding-left:18px;color:var(--muted);margin:0}.business-card li{margin:6px 0}
-    .flywheel{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.flow{display:flex;flex-direction:column;gap:8px}.flow-step{display:flex;align-items:center;gap:14px;padding:15px 16px;border:1px solid rgba(123,143,190,.22);border-radius:16px;background:rgba(255,255,255,.025)}.flow-step span{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:rgba(114,227,226,.14);color:var(--cyan);font-weight:800;font-size:13px;flex:0 0 auto}.flow-step strong{display:block}.flow-step small{color:var(--muted);display:block;margin-top:2px}.arrow{color:var(--muted);text-align:center;height:13px;line-height:10px}
-    .values{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.value-card{padding:25px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(150deg,rgba(18,26,43,.88),rgba(9,13,24,.86))}.value-card .time{font-size:12px;letter-spacing:.12em;color:var(--cyan);font-weight:800}.value-card h3{margin:13px 0 8px;font-size:23px}.value-card p{color:var(--muted);margin:0}.value-card ul{padding-left:17px;color:#c5d0e3}.value-card li{margin:7px 0}
-    .proof{display:grid;grid-template-columns:1fr 1fr;gap:16px}.proof-card{min-height:245px;display:flex;flex-direction:column;justify-content:space-between}.proof-card a{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-weight:700;font-size:13px;margin-top:16px}.proof-card a::after{content:"↗"}.status{display:grid;grid-template-columns:1fr 1fr;gap:16px}.status-panel h3{display:flex;align-items:center;gap:10px}.status-dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px rgba(141,229,167,.1)}.checklist{display:grid;gap:10px;margin-top:14px}.check{display:flex;gap:10px;align-items:flex-start;color:#cbd5e6}.check::before{content:"✓";color:var(--green);font-weight:900}.need .check::before{content:"＋";color:var(--orange)}
-    .founder{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stage{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(123,143,190,.16)}.stage:last-child{border-bottom:none}.stage-no{color:var(--cyan);font-weight:800;font-size:20px;line-height:1.2}.stage h3{font-size:18px;margin:0 0 5px}.stage p{margin:0;color:var(--muted)}.decision{background:linear-gradient(135deg,rgba(114,227,226,.11),rgba(140,168,255,.08));border:1px solid rgba(114,227,226,.26);border-radius:var(--radius);padding:30px}.decision h3{font-size:30px;line-height:1.2;margin:0 0 14px}.decision p{color:#c9d6ea;margin:0 0 20px}.decision-list{display:grid;gap:10px}.decision-list div{display:flex;gap:10px;align-items:center}.decision-list b{width:27px;height:27px;border-radius:9px;background:rgba(114,227,226,.17);color:var(--cyan);display:grid;place-items:center;font-size:12px}
-    .appendix{display:grid;grid-template-columns:1fr 1fr;gap:16px}.accordion{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.025)}.accordion button{width:100%;padding:16px 18px;background:transparent;color:var(--ink);border:none;display:flex;justify-content:space-between;align-items:center;font:inherit;text-align:left;cursor:pointer}.accordion button span:last-child{color:var(--muted);font-size:20px}.accordion .body{display:none;padding:0 18px 18px;color:var(--muted);font-size:14px}.accordion.open .body{display:block}.accordion.open button span:last-child{transform:rotate(45deg)}
-    footer{padding:44px 0 60px;border-top:1px solid rgba(123,143,190,.14);color:var(--muted);font-size:13px}.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-brand{color:var(--ink);font-weight:700}
-    @media(max-width:900px){.hero-grid,.mission,.flywheel,.founder{grid-template-columns:1fr}.business-map,.grid-3,.values{grid-template-columns:1fr}.grid-2,.proof,.status,.appendix{grid-template-columns:1fr}.nav{display:none}.hero{padding-top:62px}.section-head{display:block}.section-head p{margin-top:14px}.wrap{width:min(calc(100% - 32px),var(--max))}.footer-row{display:block}.footer-row div+div{margin-top:12px}}
-    @media print{.topbar{position:static}.hero{padding-top:30px}section{padding:40px 0}.btn,.nav{display:none}body{background:#fff;color:#111}.panel,.value-card,.decision,.hero-card{box-shadow:none;background:#fff;border-color:#ddd}.muted,.panel p,.value-card p,.value-card li,.stage p{color:#555}.hero-card h3,.hero-card p{color:#111}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>栖城焱邦｜企业不是缺 AI，而是缺一条落地路径</title>
+<meta name="description" content="栖城焱邦：懂经营的局外合伙人，陪企业诊断问题、共建场景、验证 AI 业务价值。">
+<style>
+:root{
+  --bg:#0b0a12; --panel:#141222; --panel2:#100f1c; --card:#161526; --line:#2b2840;
+  --text:#f5f3ff; --muted:#b6b2ca; --purple:#7b57f1; --purple2:#a78bfa; --purple3:#d9d0ff;
+  --ok:#53c28b; --warn:#ffb84d; --stop:#ff6b7a; --shadow:0 18px 50px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{margin:0;background:radial-gradient(circle at 80% 10%,rgba(123,87,241,.14),transparent 20%),var(--bg);color:var(--text);font:16px/1.7 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1320px,90%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(11,10,18,.88);backdrop-filter:blur(12px);border-bottom:1px solid #221f32}
+nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.brandMark{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#9b7aff,var(--purple3));box-shadow:0 0 24px rgba(123,87,241,.35)}
+.brand small{display:block;color:var(--muted);font-size:10px;font-weight:500}
+.links{display:flex;gap:22px;color:var(--muted);font-size:14px}
+.links a:hover{color:var(--purple3)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;background:linear-gradient(135deg,var(--purple),#8d6cff);color:#fff;border:0;box-shadow:0 10px 24px rgba(123,87,241,.28);font-weight:800}
+.btn.ghost{background:transparent;border:1px solid #3a3353;box-shadow:none;color:var(--purple3)}
+.hero{padding:86px 0 78px}
+.heroGrid{display:grid;grid-template-columns:1.12fr .88fr;gap:38px;align-items:center}
+.eyebrow,.kicker{font-size:12px;letter-spacing:.16em;color:var(--purple2);font-weight:900;text-transform:uppercase}
+.eyebrow:before{content:"";display:inline-block;width:28px;height:1px;background:var(--purple2);margin:0 10px 4px 0}
+h1{font-size:clamp(36px,4.5vw,62px);line-height:1.15;letter-spacing:-.045em;margin:16px 0}
+h1 em{font-style:normal;color:var(--purple3);text-shadow:0 0 28px rgba(167,139,250,.14)}
+.lead{font-size:17px;color:#ddd7f0;max-width:760px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.statement{background:linear-gradient(145deg,#17152a,#11101d);border:1px solid #332c4d;border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+.statement .label{font-size:12px;color:var(--muted);margin-bottom:10px}
+.statement h2{font-size:30px;line-height:1.28;margin:0 0 12px}
+.statement p{color:var(--muted);margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.chip{padding:8px 12px;border-radius:999px;border:1px solid #352f4e;background:#120f20;color:#ddd5ff;font-size:12px}
+section{padding:78px 0;border-bottom:1px solid #171523}
+.sectionHead{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:32px;align-items:center;margin-bottom:28px}
+.sectionHead h2{font-size:clamp(26px,3.1vw,42px);line-height:1.22;letter-spacing:-.03em;margin:10px 0 0}
+.sectionHead p{color:var(--muted);margin:0;max-width:none;width:100%;justify-self:stretch;padding-top:0;line-height:1.55;font-size:14px}
+.grid{display:grid;gap:14px}
+.g5{grid-template-columns:repeat(5,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:linear-gradient(145deg,#171525,#12111f);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#2c2350,#1a1630);color:var(--purple3);font-size:22px;margin-bottom:16px;border:1px solid #3a2f67}
+.card h3{font-size:17px;margin:0 0 8px}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.value .num,.case .num{position:absolute;right:18px;bottom:8px;font-size:56px;line-height:1;color:rgba(167,139,250,.11);font-weight:900}
+.value,.case{position:relative;overflow:hidden;min-height:200px}
+.methodWrap{display:grid;grid-template-columns:.78fr 1.22fr;gap:22px}
+.aside{background:linear-gradient(145deg,#1b1630,#11101d);border:1px solid #3a2f67;border-radius:24px;padding:24px}
+.aside h3{font-size:30px;line-height:1.25;margin:10px 0 12px}
+.aside p{color:var(--muted);font-size:14px;margin:0}
+.formula{margin-top:16px;padding-top:16px;border-top:1px solid #302948;color:#dcd6f1;font-size:13px}
+.step{border:1px solid var(--line);border-radius:18px;background:var(--panel2);overflow:hidden}
+.step + .step{margin-top:10px}
+.step button{width:100%;padding:16px 18px;background:none;border:0;color:var(--text);display:flex;justify-content:space-between;align-items:center;text-align:left;font-weight:800}
+.step small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.detail{display:none;padding:0 18px 16px;color:var(--muted);font-size:14px}
+.step.open .detail{display:block}
+.path{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
+.phase{background:#131220;border:1px solid var(--line);border-radius:16px;padding:14px}
+.phase b{display:block;color:var(--purple2);font-size:11px;letter-spacing:.06em}
+.phase span{display:block;font-size:13px;font-weight:800;margin-top:4px}
+.phase small{display:block;color:var(--muted);font-size:11px;margin-top:6px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filter{padding:8px 12px;border-radius:999px;border:1px solid #3a3353;background:#12111e;color:var(--muted);font-size:12px}
+.filter.active{background:linear-gradient(135deg,var(--purple),#8d6cff);color:white;border-color:transparent;font-weight:800}
+.case .status{display:inline-block;padding:4px 9px;border-radius:999px;border:1px solid #3b3360;background:#16112b;color:var(--purple3);font-size:10px;font-weight:800;margin-bottom:12px}
+.case .oneLiner{color:#e5e0f7;font-size:14px;margin-bottom:12px}
+.case .boundary{margin-top:12px;padding-top:12px;border-top:1px solid #2a2740;color:#9d96b9;font-size:12px}
+.miniGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.mini{padding:10px 12px;border-radius:14px;background:#120f1f;border:1px solid #2a2640;font-size:12px;color:#d8d1ef}
+.measure{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pill{padding:8px 12px;border-radius:12px;background:#141126;border:1px solid #302a4a;color:#e7e1f7;font-size:12px}
+.resultLegend{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.legend{display:flex;gap:8px;align-items:center;font-size:13px;color:#ddd7f0}
+.dot{width:12px;height:12px;border-radius:999px}
+.ok{background:var(--ok)} .warn{background:var(--warn)} .stop{background:var(--stop)}
+.faq{border:1px solid var(--line);border-radius:16px;background:#120f1f;overflow:hidden}
+.faq button{width:100%;padding:16px 18px;background:none;border:0;color:var(--text);display:flex;justify-content:space-between;align-items:center;text-align:left;font-weight:800}
+.faq p{display:none;margin:0;padding:0 18px 16px;color:var(--muted);font-size:14px}
+.faq.open p{display:block}
+.cta{background:radial-gradient(circle at 80% 30%,rgba(123,87,241,.16),transparent 28%),#0d0b17}
+.cta h2{font-size:clamp(32px,4vw,52px);line-height:1.2;margin:12px 0}
+.cta p{max-width:760px;color:var(--muted)}
+footer{padding:24px 0;color:#8e88a7;font-size:11px}
+.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);padding:10px 14px;border-radius:12px;background:#f3efff;color:#191327;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1}
+.hidden{display:none!important}
+.panoramaFlow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:stretch}
+.panStep{position:relative;min-width:0;padding:20px 10px 16px;border:1px solid #352d52;border-radius:18px;background:linear-gradient(145deg,#19152b,#11101d);text-align:center;box-shadow:var(--shadow)}
+.panStep.final{background:linear-gradient(145deg,#261a48,#151124);border-color:#6a4dc0}
+.panNo{position:absolute;top:8px;left:10px;color:#8d75d2;font-size:10px;font-weight:900;letter-spacing:.1em}
+.panIcon{width:40px;height:40px;margin:8px auto 10px;display:grid;place-items:center;border-radius:13px;background:#2b214a;color:var(--purple3);font-size:21px;border:1px solid #44346d}
+.panStep h3{font-size:14px;line-height:1.35;margin:0 0 5px;white-space:nowrap}
+.panStep p{font-size:11px;color:var(--muted);margin:0;white-space:nowrap}
+.panArrow{color:var(--purple2);font-size:21px;font-weight:900;align-self:center}
+.panoramaFoot{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding:15px 18px;border-radius:16px;background:#151126;border:1px solid #302747;font-size:14px;line-height:1.6;color:#d4c9f5;text-align:center}
+.panoramaFoot b{color:var(--purple2)}.panoramaFoot strong{color:#fff;font-size:16px;font-weight:900}
+.implementation{margin-top:14px;padding:15px 18px;border:1px solid #302747;border-radius:16px;background:linear-gradient(100deg,#141126,#100f1b);display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.implementationLabel{color:var(--purple2);font-size:12px;font-weight:900;letter-spacing:.08em;white-space:nowrap}
+.implementationFlow{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
+.implementationItem{flex:1;text-align:center;padding:8px 10px;border:1px solid #3a3156;background:#19152a;border-radius:12px;color:#f0ebff;font-size:14px;font-weight:800;white-space:nowrap}
+.implementationArrow{color:var(--purple2);font-size:18px;font-weight:900}
+@media(max-width:1100px){.panoramaFlow{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.panArrow{display:none}.panStep p{white-space:normal}.panStep h3{white-space:normal}}
+@media(max-width:760px){.implementation{grid-template-columns:1fr;gap:10px}.implementationFlow{flex-wrap:wrap;justify-content:flex-start}.implementationItem{flex:1 1 36%;white-space:normal}.implementationArrow{display:none}}
+@media(min-width:1101px){.sectionHead p{white-space:nowrap;font-size:13px;letter-spacing:-.015em}}
+@media(max-width:1100px){.sectionHead{grid-template-columns:1fr;gap:10px}.sectionHead p{white-space:normal;justify-self:start;padding-top:0}}
+@media(max-width:980px){
+  .heroGrid,.methodWrap,.sectionHead{grid-template-columns:1fr}
+  .g5,.g4{grid-template-columns:repeat(2,1fr)}
+  .path{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:640px){
+  .wrap{width:calc(100% - 28px)}
+  .links{display:none}
+  .hero{padding:58px 0}
+  h1{font-size:36px}
+  .lead{font-size:16px}
+  .statement h2{font-size:24px}
+  .g5,.g4,.g3,.g2,.path,.miniGrid,.panoramaFlow{grid-template-columns:1fr}.panStep{padding:16px 18px;text-align:left;display:grid;grid-template-columns:38px 1fr;column-gap:12px;align-items:center}.panNo{position:static;grid-row:1 / span 2;align-self:center}.panIcon{display:none}.panStep h3{white-space:normal}.panStep p{white-space:normal}.panoramaFoot{justify-content:flex-start}.implementation{grid-template-columns:1fr;gap:10px}.implementationFlow{flex-wrap:wrap;justify-content:center}.implementationItem{flex:1 1 35%;white-space:normal}.implementationArrow{display:none}
+  section{padding:58px 0}
+}
+</style>
 </head>
 <body>
-  <header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="#top"><span class="mark"></span><span>栖城焱邦<small>AI创业项目 · 创始合伙人对齐材料</small></span></a><nav class="nav"><a href="#what">我们在做什么</a><a href="#co-create">使命共创</a><a href="#business">业务结构</a><a href="#market">市场规划</a><a href="#status">现状与缺口</a><a href="#founder" class="nav-cta">创始合伙人对齐</a></nav></div></header>
-  <main id="top">
-    <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">QICHENG YANBANG · 2026.09</div><h1>不是再做一个<br/>AI 工具，<br/>而是在搭建一条<br/><em>可持续的创业主航道</em></h1><p class="hero-lead">以企业 AI 转型陪跑获得真实收入，以真实项目沉淀标准化能力，再用 <strong>Relaysol 接力脑</strong> 服务更广泛的个人用户，最终让 AI 从“问答工具”进化为真正懂你的“数字分身”。</p><div class="hero-actions"><a class="btn primary" href="#what">从事业全景开始</a><a class="btn secondary" href="#founder">进入合伙人对齐</a></div></div><div class="hero-card"><div class="card-kicker">给创始合伙人的一句话</div><h3>先对齐我们要共同做成什么，再决定每个人具体怎么参与。</h3><p>这不是一次岗位说明，也不是功能汇报。它是一份关于使命、业务、阶段价值和投入选择的完整说明。</p><div class="signal"><span class="pill">个人标品</span><span class="pill">企业陪跑</span><span class="pill">标准化沉淀</span><span class="pill">数字分身</span></div><div class="hero-note">阅读建议：先看“为什么做”和“业务结构”，再看产品、技术和当前缺口。</div></div></div></section>
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <span class="brandMark"></span>
+      <span>栖城焱邦<small>企业 AI 诊断 · 场景共创 · 落地交付</small></span>
+    </a>
+    <div class="links">
+      <a href="#panorama">全景主线</a><a href="#problems">经营问题</a>
+      <a href="#value">客户价值</a><a href="#proof">实践数字</a>
+      <a href="#method">共建方法</a>
+      <a href="#cases">实践案例</a>
+      <a href="#trust">交付保障</a>
+    </div>
+    <button class="btn ghost" onclick="sharePage()">分享介绍 ↗</button>
+  </nav>
+</header>
 
-    <section id="what"><div class="wrap"><div class="section-head"><div><div class="kicker">01 / 事业定义</div><h2>我们到底在做什么</h2></div><p>我们在做的不是一个孤立的产品，而是一套从真实问题出发、在真实业务中验证、最终沉淀为产品和资产的 AI 创业系统。</p></div><div class="mission"><div class="panel accent-cyan"><div class="tag">我们想共同回答的问题</div><p class="quote">我们能不能让 AI 不只是帮助人和组织“做得更多”，而是帮助他们从找到自己、做对选择，到拿到结果，持续释放创造力与增长潜能？</p><p style="margin-top:18px;color:var(--muted)">这不是使命愿景的最终答案，而是栖城焱邦与创始合伙人共同制定使命、愿景和价值观的讨论起点。</p></div><div class="panel"><h3>两类问题，指向同一个机会</h3><ul class="list"><li>普通人知道 AI 很重要，却不知道如何从自己的问题开始，逐渐形成长期可用的 AI 能力。</li><li>企业知道 AI 必须进入业务，却缺少一套从场景选择、流程改造到结果验收的陪跑方法。</li><li>通用大模型能回答问题，却不会天然理解一个人的思维模式、关系网络和商业直觉。</li></ul></div></div></div></section>
+<main id="top">
+  <section class="hero">
+    <div class="wrap heroGrid">
+      <div>
+        <div class="eyebrow">QICHENG YANBANG · BUSINESS × AI</div>
+        <h1>企业不是缺 AI，<br>而是缺一条把 AI<br><em>变成生产力的落地路径。</em></h1>
+        <p class="lead">懂经营的局外合伙人 × 专业 AI 共创交付团队。<br>从经营问题出发，陪企业把 AI 做成真实生产力。</p>
+        <div class="actions">
+          <a class="btn" href="#method">了解我们如何共建 →</a>
+          <a class="btn ghost" href="#cases">查看真实实践</a>
+        </div>
+      </div>
+      <aside class="statement">
+        <div class="label">我们的原则</div>
+        <h2>先把经营看清，<br>再把 AI 做进业务。</h2>
+        <p>站在经营者一边，找准值得解决的问题；与团队共创方案，并对验证结果负责。</p>
+        <div class="chips">
+          <span class="chip">懂经营</span>
+          <span class="chip">找真问题</span>
+          <span class="chip">共创落地</span>
+          <span class="chip">验证价值</span>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-    <section id="business"><div class="wrap"><div class="section-head"><div><div class="kicker">02 / 业务结构</div><h2>三层业务，组成一台增长飞轮</h2></div><p>企业陪跑负责当下的收入与场景，标准化沉淀负责中期的复制，个人标品负责长期的用户基础与数字分身入口。</p></div><div class="business-map"><article class="panel business-card accent-cyan"><div class="tag">01 · 个人标品业务</div><h3>Relaysol 接力脑</h3><div class="meta">千元级年费 · 面向个人用户</div><ul><li>个人商业化成长伙伴：无门槛、小白友好上手 AI</li><li>把 AI 能力用到自己的真实问题与机会中</li><li>在持续使用中实现价值变现并沉淀个人数字资产</li></ul><div class="number">01</div></article><article class="panel business-card orange accent-orange"><div class="tag">02 · 企业陪跑业务</div><h3>垂直领域 AI 转型陪跑</h3><div class="meta">基础服务费 + 达标成功费</div><ul><li>整体收费 10 万—百万元量级</li><li>从真实业务问题切入，而不是卖功能</li><li>当前核心盈利板块与现金流来源</li></ul><div class="number">02</div></article><article class="panel business-card pink accent-pink"><div class="tag">03 · 标品沉淀计划</div><h3>把交付经验变成可复制产品</h3><div class="meta">服务中沉淀 · 交付中产品化</div><ul><li>在真实业务中提炼高频场景</li><li>把高频场景变成标准化产品</li><li>面向更多客户做规模化推广</li></ul><div class="number">03</div></article></div></div></section>
+  <section id="panorama">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">THE WHOLE PICTURE / 全景主线</div>
+          <h2>从经营问题，走到可持续的生产力</h2>
+        </div>
+        <p>这条路径从经营事实出发，最终落到可验证、可复用的业务改变。</p>
+      </div>
+      <div class="panoramaFlow">
+        <article class="panStep">
+          <span class="panNo">01</span><div class="panIcon">◉</div>
+          <h3>看清经营</h3><p>目标 · 现状 · 流程</p>
+        </article>
+        <span class="panArrow">→</span>
+        <article class="panStep">
+          <span class="panNo">02</span><div class="panIcon">⌕</div>
+          <h3>找准真问题</h3><p>损耗 · 根因 · 机会</p>
+        </article>
+        <span class="panArrow">→</span>
+        <article class="panStep">
+          <span class="panNo">03</span><div class="panIcon">✦</div>
+          <h3>选定场景</h3><p>价值 · 可行 · 可验</p>
+        </article>
+        <span class="panArrow">→</span>
+        <article class="panStep">
+          <span class="panNo">04</span><div class="panIcon">⌘</div>
+          <h3>共创落地</h3><p>人机分工 · 真场景</p>
+        </article>
+        <span class="panArrow">→</span>
+        <article class="panStep">
+          <span class="panNo">05</span><div class="panIcon">✓</div>
+          <h3>验证价值</h3><p>效果 · 复盘 · 取舍</p>
+        </article>
+        <span class="panArrow">→</span>
+        <article class="panStep final">
+          <span class="panNo">06</span><div class="panIcon">↗</div>
+          <h3>沉淀复制</h3><p>流程 · 知识 · 能力</p>
+        </article>
+      </div>
+      <div class="implementation" aria-label="实现方式">
+        <div class="implementationLabel">实现方式</div>
+        <div class="implementationFlow">
+          <div class="implementationItem">工具</div><span class="implementationArrow">→</span>
+          <div class="implementationItem">智能体</div><span class="implementationArrow">→</span>
+          <div class="implementationItem">工作流</div><span class="implementationArrow">→</span>
+          <div class="implementationItem">人机协作系统</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="co-create"><div class="wrap"><div class="section-head"><div><div class="kicker">03 / 共创议题</div><h2>使命、愿景、价值观：留给创始合伙人的共同命题</h2></div><p>下面是工作版表达，不是由一个人单方面宣布的答案。我们先提供一组有方向的草案，再在深度沟通中共同校准，形成真正能指导取舍和行动的团队共识。</p></div><div class="grid-3"><div class="panel accent-cyan"><div class="tag">使命 · 工作版</div><h3>让 AI 赋能每个人和每个组织</h3><p class="quote" style="font-size:24px;margin-top:16px">从找到自己、做对选择，到拿到结果，持续释放创造力与增长潜能。</p><p style="margin-top:18px">我们相信，真正有价值的 AI，不是替人和组织做决定，而是帮助他们更清楚地认识自己、理解环境、做出选择，并把选择转化为可持续的结果。</p><p style="margin-top:12px">Relaysol 正是这条闭环的产品化表达：从找到自己、找到方向，到行动、验证和结果沉淀。我们希望用更少内耗、更少浪费、更少无效试错的方式，让个人和组织获得不断放大的能力。</p></div><div class="panel accent-orange"><div class="tag">愿景 · 工作版</div><h3>让每个人和每个组织，都拥有一个真正懂自己、陪伴成长、持续创造结果的 AI 合伙人。</h3><p style="margin-top:18px">这既是 Relaysol 的长期产品方向，也是栖城焱邦希望在个人与组织进入 AI 时代时扮演的角色。</p></div><div class="panel accent-pink"><div class="tag">价值观 · 待共创</div><h3>先给方向，不直接定稿</h3><ul class="list"><li>从真实问题出发，而不是从功能出发</li><li>以结果负责，而不是以过程自我感动</li><li>让每一次行动都留下可复用的资产</li><li>不制造焦虑，不透支人，不追求无效增长</li><li>把复杂留在系统里，把简单留给用户</li><li>既追求增长，也坚持长期主义和真实价值</li></ul></div></div><div class="panel" style="margin-top:16px"><div class="tag">最终推荐的共创提问</div><h3 style="font-size:28px;line-height:1.3">我们能不能让 AI 不只是帮助人和组织“做得更多”，而是帮助他们从找到自己、做对选择，到拿到结果，持续释放创造力与增长潜能？</h3><p style="margin-top:16px;color:var(--muted)">请合伙人看完后，带着自己的答案、质疑和补充进入讨论。使命、愿景、价值观的最终版本，要能够代表我们共同愿意长期投入的事业。</p></div></div></section>
+  <section id="problems">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">01 / BUSINESS CHALLENGES</div>
+          <h2>企业卡住的，不只是缺一个 AI 工具</h2>
+        </div>
+        <p>从反复发生的工作问题入手，找出真正值得解决的卡点。</p>
+      </div>
+      <div class="grid g5">
+        <article class="card"><div class="icon">↻</div><h3>专业工作重复</h3><p>资料整理、初稿、核对占用专家时间。</p></article>
+        <article class="card"><div class="icon">⇄</div><h3>跨部门断点</h3><p>资料交接不完整、责任边界不清，工作常停在等待与确认。</p></article>
+        <article class="card"><div class="icon">◷</div><h3>任务靠人盯</h3><p>节点、反馈、承诺依赖记忆与催办，执行易失真。</p></article>
+        <article class="card"><div class="icon">⌘</div><h3>知识难沉淀</h3><p>经验散落在群消息、表格和个人脑中，难以复用。</p></article>
+        <article class="card"><div class="icon">AI</div><h3>试过 AI 但没落地</h3><p>有兴趣、有试点，但没有进入真正业务流程。</p></article>
+      </div>
+    </div>
+  </section>
 
-<section id="market"><div class="wrap"><div class="section-head"><div><div class="kicker">04 / 市场与规模推进</div><h2>先做出可验证的收入，再把规模做大</h2></div><p>下面是栖城焱邦当前的经营假设与推进目标，不是对市场的夸大承诺，而是用于创始团队对齐资源投入、节奏与验收标准。</p></div><div class="grid-3"><div class="panel accent-cyan"><div class="tag">个人标品 · 2026</div><h3>Relaysol 上线</h3><p>今年发布 Relaysol，年费定价 <strong style="color:var(--ink)">1,717 元</strong>，目标在 2027 年春节前推广到 1,000 人。</p><div class="meta" style="margin-top:18px;color:var(--cyan);font-weight:800">1,000 人 × 1,717 元 ≈ 171.7 万元年化收入</div><p style="margin-top:8px;font-size:12px">按满额年费粗算，用于验证用户规模与续费价值，不等同于已实现收入。</p></div><div class="panel accent-orange"><div class="tag">企业服务 · 2026</div><h3>先做出 2—3 个高价值案例</h3><p>企业级服务先按 10—20 万元级别推进，重点不是追求客户数量，而是拿到真实结果、跑通交付路径。</p><div class="meta" style="margin-top:18px;color:var(--orange);font-weight:800">2—3 家 × 10—20 万元 ≈ 20—60 万元基础服务规模</div><p style="margin-top:8px;font-size:12px">以上为基础服务费区间测算，达标成功费与后续产品收入另计。</p></div><div class="panel accent-pink"><div class="tag">规模化 · 2027</div><h3>企业客户 10—100 家量级</h3><p>明年把企业级用户推进到 10—100 家量级，同时再沉淀 3—5 个可复制的标准化产品。</p><div class="meta" style="margin-top:18px;color:var(--pink);font-weight:800">10—100 家 × 10—20 万元 = 100 万—2,000 万元基础服务规模</div><p style="margin-top:8px;font-size:12px">这是区间目标，用于规划组织、交付和产品化能力，不是财务预测。</p></div></div><div class="panel" style="margin-top:16px"><div class="tag">市场规模怎么看</div><div class="flywheel" style="margin-top:4px"><div><h3>不是单一市场，而是三层叠加</h3><ul class="list"><li><strong style="color:var(--ink)">个人 AI 商业化成长市场：</strong>以千元级年费扩大用户基数。</li><li><strong style="color:var(--ink)">企业 AI 转型服务市场：</strong>以高客单价陪跑获得现金流和真实业务场景。</li><li><strong style="color:var(--ink)">垂直标准化产品市场：</strong>把高频场景封装成标品，形成可重复销售和规模化推广。</li></ul></div><div><h3>我们的规模推进逻辑</h3><div class="flow"><div class="flow-step"><span>1</span><div><strong>今年：验证</strong><small>发布 Relaysol；春节前 1,000 人；企业服务先做 2—3 个</small></div></div><div class="arrow">↓</div><div class="flow-step"><span>2</span><div><strong>明年：复制</strong><small>企业客户达到 10—100 家量级；新增 3—5 个标准化产品</small></div></div><div class="arrow">↓</div><div class="flow-step"><span>3</span><div><strong>再往后：放大</strong><small>形成个人订阅、企业方案、产品授权与合作伙伴渠道</small></div></div></div></div></div></div></div></section>
+  <section id="value">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">02 / CUSTOMER VALUE</div>
+          <h2>四个方向，衡量业务价值</h2>
+        </div>
+        <p>先定衡量标准，再用真实业务验证。</p>
+      </div>
+      <div class="grid g4">
+        <article class="card value"><div class="icon">✳</div><h3>专业生产力</h3><p>辅助整理、初稿、识别、初算与信息收集，让专业人员把时间留给判断与复核。</p><span class="num">01</span></article>
+        <article class="card value"><div class="icon">↗</div><h3>组织执行力</h3><p>让任务、责任人、节点与反馈更清晰，减少协同中的等待和遗漏。</p><span class="num">02</span></article>
+        <article class="card value"><div class="icon">▤</div><h3>组织知识力</h3><p>把分散资料、案例和经验变成团队可查、可学、可复用的知识资产。</p><span class="num">03</span></article>
+        <article class="card value"><div class="icon">◎</div><h3>经营判断力</h3><p>先看清事实，再决定先做什么、暂不做什么，降低盲目投入风险。</p><span class="num">04</span></article>
+      </div>
+    </div>
+  </section>
 
-<section><div class="wrap"><div class="section-head"><div><div class="kicker">05 / 商业路径</div><h2>“借船出海”，再“造船卖票”</h2></div><p>前期借助已有技术、客户与业务资源快速进入真实场景，后期把验证过的方法、工作流和能力编排封装成自己的产品与方案。</p></div><div class="flywheel"><div class="panel"><div class="flow"><div class="flow-step"><span>1</span><div><strong>借助现有资源进入市场</strong><small>技术底座、客户关系、企业场景、合作网络</small></div></div><div class="arrow">↓</div><div class="flow-step"><span>2</span><div><strong>用陪跑服务解决真实问题</strong><small>从销售、品牌、管理或运营问题切入</small></div></div><div class="arrow">↓</div><div class="flow-step"><span>3</span><div><strong>沉淀可复制的方法与产品</strong><small>把交付中的流程、模块和 AI 能力产品化</small></div></div><div class="arrow">↓</div><div class="flow-step"><span>4</span><div><strong>造出自己的“船”，向更多人卖票</strong><small>个人订阅、企业方案、授权与合作伙伴渠道</small></div></div></div></div><div class="panel accent-orange"><div class="tag">为什么这个模式适合现在</div><h3>先验证价值，再放大规模</h3><p>我们不需要一开始就把所有功能都做完，也不需要先建立一个庞大的技术组织。先用高价值服务拿到真实结果，再把结果沉淀成标准产品，能同时降低产品风险与商业风险。</p><ul class="list"><li>企业服务带来现金流</li><li>真实交付带来一手场景</li><li>场景沉淀带来标准化产品</li><li>产品规模化带来更高的经营杠杆</li></ul></div></div></div></section>
+  <section id="proof">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">AI AT WORK / 行业研究</div>
+          <h2>AI 已普及，价值却未必兑现</h2>
+        </div>
+        <p>AI 不难试，难的是把组织、数据、流程和治理真正配好。</p>
+      </div>
+      <div class="grid g4">
+        <article class="card value">
+          <div class="kicker">STANFORD AI INDEX 2026</div>
+          <h3 style="font-size:36px;margin:9px 0">70%</h3>
+          <p>已在至少一个业务职能中使用生成式 AI。</p>
+          <p style="margin-top:12px"><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener" style="color:var(--purple3);font-size:11px">查看报告 ↗</a></p>
+        </article>
+        <article class="card value">
+          <div class="kicker">GARTNER · 2027 CIO AGENDA</div>
+          <h3 style="font-size:36px;margin:9px 0">13%</h3>
+          <p>认为组织已获得显著或变革性 AI 价值。</p>
+          <p style="margin-top:12px"><a href="https://www.expresscomputer.in/news/only-13-of-cios-report-significant-or-transformational-value-from-ai-gartner/140258/" target="_blank" rel="noopener" style="color:var(--purple3);font-size:11px">查看调查摘要 ↗</a></p>
+        </article>
+        <article class="card value">
+          <div class="kicker">IRON MOUNTAIN · 2026</div>
+          <h3 style="font-size:36px;margin:9px 0">86%</h3>
+          <p>组织称过去一年曾因数据问题，导致 AI 项目延期或取消。</p>
+          <p style="margin-top:12px"><a href="https://www.expresscomputer.in/news/the-ai-readiness-illusion-86-of-organisations-say-data-concerns-delay-or-derail-ai-projects/140182/" target="_blank" rel="noopener" style="color:var(--purple3);font-size:11px">查看报告摘要 ↗</a></p>
+        </article>
+        <article class="card value">
+          <div class="kicker">MCKINSEY · STATE OF AI 2025</div>
+          <h3 style="font-size:36px;margin:9px 0">21%</h3>
+          <p>已从根本上重新设计至少部分工作流程。</p>
+          <p style="margin-top:12px"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-how-organizations-are-rewiring-to-capture-value" target="_blank" rel="noopener" style="color:var(--purple3);font-size:11px">查看调查 ↗</a></p>
+        </article>
+      </div>
+      <div class="card" style="margin-top:14px;padding:22px 24px;background:linear-gradient(120deg,#1c1633,#11101d);border-color:#44366c">
+        <div class="kicker">WHAT BLOCKS VALUE / 为什么没做成</div>
+        <div class="grid g4" style="margin-top:14px">
+          <div><h3>组织</h3><p>没人负责改变工作方式，员工也没有足够支持。</p></div>
+          <div><h3>数据</h3><p>资料分散、口径不一、来源和权限不清。</p></div>
+          <div><h3>流程</h3><p>把 AI 加到旧流程里，却没有重新设计工作。</p></div>
+          <div><h3>治理与衡量</h3><p>缺少风险边界、业务指标和停止条件。</p></div>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:11px;margin-top:13px">口径说明：以上为不同机构、不同样本的独立调查结果，不可直接横向比较，也不代表每家企业的实际表现。</p>
+    </div>
+  </section>
 
-    <section><div class="wrap"><div class="section-head"><div><div class="kicker">06 / 产品壁垒</div><h2>从“问答工具”进化为“数字分身”</h2></div><p>用户不需要学习复杂 Prompt，而是通过日常交互，让系统逐渐理解自己，并把理解转化为下一次可以调用的资产。</p></div><div class="grid-3"><div class="panel"><div class="tag">理解</div><h3>越用越懂你</h3><p>接力脑在持续互动中逐渐理解用户的思维模式、决策习惯、人脉关系、商业直觉与能量状态。</p></div><div class="panel"><div class="tag">沉淀</div><h3>每一次想清楚，都留下资产</h3><p>画像、决策、关系、商业、项目、知识、心流与承诺，形成个人可检索、可复用的商业记忆。</p></div><div class="panel"><div class="tag">壁垒</div><h3>通用模型难以单靠算力复制</h3><p>越贴近个人真实判断，越依赖长期上下文和垂直场景积累，这正是垂直领域 AI 的生存空间。</p></div></div></div></section>
+  <section id="method">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">03 / HOW WE WORK</div>
+          <h2>从全景判断，到具体行动</h2>
+        </div>
+        <p>按企业现状选择切入点；每一步都明确要做什么、交付什么、如何验收。点击查看详情。</p>
+      </div>
+      <div class="methodWrap">
+        <aside class="aside">
+          <div class="kicker">OUR PRINCIPLE</div>
+          <h3>事实先于方案<br>责任先于自动化<br>验证先于推广</h3>
+          <p>先确认业务问题真实存在，再明确负责人、数据权限、人机边界与验收标准。价值未验证前，不把试点包装成成功。</p>
+          <div class="formula">8 项经营事实 · 3 道决策 Gate · 1 个灯塔场景 · 90 天参考路径</div>
+        </aside>
+        <div>
+          <div class="step open">
+            <button onclick="toggle(this)"><span><b>01</b> 看清企业｜经营诊断<small>先把问题看清楚，再判断要不要做</small></span><span>−</span></button>
+            <div class="detail">围绕客户结构、收入结构、客单价、团队结构、人工成本、当前系统、当前 AI 使用与关键业务流程，看清真实情况。<div class="miniGrid"><div class="mini">交付：经营事实表</div><div class="mini">交付：核心流程图</div></div></div>
+          </div>
+          <div class="step">
+            <button onclick="toggle(this)"><span><b>02</b> 选择场景｜立项判断<small>先做一个值得做、做得动的场景</small></span><span>＋</span></button>
+            <div class="detail">选择一个高价值、可实施、可验证的场景，明确范围、责任人、预算与验收指标。<div class="miniGrid"><div class="mini">交付：场景立项卡</div><div class="mini">交付：验收方案</div></div></div>
+          </div>
+          <div class="step">
+            <button onclick="toggle(this)"><span><b>03</b> 联合共建｜方案与原型<small>一起把东西做出来</small></span><span>＋</span></button>
+            <div class="detail">通过样本、流程、角色分工和人机边界设定，做出可用版本，而不是只停留在 PPT。<div class="miniGrid"><div class="mini">交付：方案说明</div><div class="mini">交付：原型 / Demo</div></div></div>
+          </div>
+          <div class="step">
+            <button onclick="toggle(this)"><span><b>04</b> 真实试用｜验证效果<small>让真实用户在真实流程里用起来</small></span><span>＋</span></button>
+            <div class="detail">收集反馈，比较前后变化，识别什么有效、什么需要调整、什么应该停止。<div class="miniGrid"><div class="mini">交付：前后对比</div><div class="mini">交付：问题清单</div></div></div>
+          </div>
+          <div class="step">
+            <button onclick="toggle(this)"><span><b>05</b> 沉淀复制｜能力留在企业<small>把有效方法留下来</small></span><span>＋</span></button>
+            <div class="detail">将规则、资料、操作路径和经验沉淀为团队可以持续使用的能力。<div class="miniGrid"><div class="mini">交付：知识资产</div><div class="mini">交付：复制建议</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="path">
+        <div class="phase"><b>Day 1–7</b><span>经营诊断</span><small>看清问题</small></div>
+        <div class="phase"><b>Day 8–14</b><span>场景立项</span><small>定范围与指标</small></div>
+        <div class="phase"><b>Day 15–45</b><span>联合共建</span><small>做出可用版本</small></div>
+        <div class="phase"><b>Day 46–60</b><span>真实试用</span><small>收集反馈</small></div>
+        <div class="phase"><b>Day 61–75</b><span>流程优化</span><small>明确人机分工</small></div>
+        <div class="phase"><b>Day 76–90</b><span>价值验收</span><small>决定下一步</small></div>
+      </div>
+    </div>
+  </section>
 
-    <section id="value"><div class="wrap"><div class="section-head"><div><div class="kicker">07 / 阶段价值</div><h2>长期、中期、当下，分别创造什么价值</h2></div><p>三种价值不是彼此替代，而是沿着同一条主航道逐步兑现。</p></div><div class="values"><article class="value-card"><div class="time">LONG TERM · 长期</div><h3>成为个人与组织的 AI 认知基础设施</h3><p>让每个人、每个团队都拥有一个越来越懂自己的 AI 合伙人。</p><ul><li>个人数字分身与商业记忆</li><li>组织知识、关系与决策资产</li><li>形成个性化、垂直化的长期壁垒</li></ul></article><article class="value-card"><div class="time">MID TERM · 中期</div><h3>形成可复制的行业方案与产品收入</h3><p>把企业陪跑中的方法、模块和交付流程，沉淀成标准化产品。</p><ul><li>标准化企业陪跑方法论</li><li>垂直行业 AI 应用方案</li><li>订阅、授权、服务与渠道收入</li></ul></article><article class="value-card"><div class="time">NOW · 当下</div><h3>用真实结果完成创业验证</h3><p>把有限资源集中在当前最重要的事情：拿到案例、收入与创始团队共识。</p><ul><li>推进企业应用落地并验证结果</li><li>跑通第一批可复用交付路径</li><li>让核心伙伴真正理解并愿意投入</li></ul></article></div></div></section>
+  <section id="cases">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">04 / REAL PRACTICE</div>
+          <h2>说人话的真实实践，企业一看就懂</h2>
+        </div>
+        <p>以下为匿名化的真实实践；阶段成果与已验证成效分开标注。</p>
+      </div>
+      <div class="filters">
+        <button class="filter active" data-filter="all">全部</button>
+        <button class="filter" data-filter="diagnosis">经营诊断</button>
+        <button class="filter" data-filter="workflow">专业工作流</button>
+        <button class="filter" data-filter="knowledge">知识资产</button>
+        <button class="filter" data-filter="adoption">用户采用</button>
+      </div>
+      <div class="grid g2">
+        <article class="card case" data-cat="diagnosis">
+          <div class="status">阶段诊断</div>
+          <h3>多部门经营诊断</h3>
+          <div class="oneLiner">不是直接上系统，而是先弄清：问题在哪里、先做哪一块最值。</div>
+          <p>已形成多部门诊断与优先场景讨论；相关经营管理表包括 105 条品牌档案、8 条商机、42 条案例记录。</p>
+          <div class="measure"><span class="pill">看到真实问题</span><span class="pill">明确优先级</span><span class="pill">形成下一步</span></div>
+          <div class="boundary">边界：当前展示的是已发生的诊断过程，不等于所有部门都已完成最终转型验证。</div>
+          <span class="num">01</span>
+        </article>
+        <article class="card case" data-cat="workflow">
+          <div class="status">共创试用</div>
+          <h3>专业工作流共创</h3>
+          <div class="oneLiner">让 AI 先做准备工作，人负责判断、复核和最终拍板。</div>
+          <p>已在专业资料整理、方案初稿、设计手册相关流程中开展共创，验证 AI 该做什么、不该做什么。</p>
+          <div class="measure"><span class="pill">人机分工更清楚</span><span class="pill">问题更早暴露</span></div>
+          <div class="boundary">边界：当前以单场景试点与真实样本为主，不把个别试用结果包装成普遍结论。</div>
+          <span class="num">02</span>
+        </article>
+        <article class="card case" data-cat="knowledge">
+          <div class="status">进行中</div>
+          <h3>知识资产与案例整理</h3>
+          <div class="oneLiner">把分散的资料、案例和经验，变成团队能用的“企业记忆”。</div>
+          <p>已归档 204+ 份资料，并完成 6 个案例的七要素建档，为后续检索与复用打基础。</p>
+          <div class="measure"><span class="pill">资料更好找</span><span class="pill">经验可复用</span></div>
+          <div class="boundary">边界：归档数量不等于业务结果，是否有效还要看团队是否真正使用。</div>
+          <span class="num">03</span>
+        </article>
+        <article class="card case" data-cat="adoption">
+          <div class="status">真实反馈</div>
+          <h3>AI 第一公里</h3>
+          <div class="oneLiner">不是所有人一上来就会用 AI，真实障碍本身也是需要解决的问题。</div>
+          <p>我们持续记录真实用户在使用 AI 时遇到的理解门槛、操作卡点与接受过程，用来优化落地路径。</p>
+          <div class="measure"><span class="pill">看见采用障碍</span><span class="pill">调整推进方式</span></div>
+          <div class="boundary">边界：当前是用户采用观察，不据此宣称某种方法已经普遍有效。</div>
+          <span class="num">04</span>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <section><div class="wrap"><div class="section-head"><div><div class="kicker">08 / 真实落地</div><h2>企业端已经有两个应用方向在推进</h2></div><p>这两个方案不是网页的全部，但它们证明我们已经在进入真实业务，而不是停留在概念讨论。</p></div><div class="proof"><article class="panel proof-card"><div><div class="tag">企业方案 01</div><h3>正在推进的企业 AI 应用方案</h3><p>作为企业陪跑业务的真实落地样本，用于验证业务场景、交付方式和标准化沉淀方向。</p></div><a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/Missee99/d72196afaabcfb287baa472f8c8e4aba/raw/3cd0413bd4e8986a60c0b3e2df872e461c812295/index.html" target="_blank" rel="noopener">打开方案页面</a></article><article class="panel proof-card"><div><div class="tag">企业方案 02</div><h3>AutoFlow OS · 产品介绍</h3><p>作为企业端正在推进的另一个应用方向，帮助我们把 AI 能力放入组织流程与业务协作中。</p></div><a href="https://autoflow-os-web.pages.dev/product-intro" target="_blank" rel="noopener">打开产品介绍</a></article></div></div></section>
+  <section id="trust" class="truth">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">05 / TRUST & DELIVERY</div>
+          <h2>不是“说得好”，而是“做得稳”</h2>
+        </div>
+        <p>企业 AI 不只要能运行，还要能被正确使用、复核、验收和维护。我们把边界与验证提前放进方案。</p>
+      </div>
+      <div class="grid g3">
+        <article class="card"><div class="icon">✓</div><h3>范围清楚</h3><p>先明确业务目标、输入资料、责任人、数据权限和不做什么，避免边做边扩。</p></article>
+        <article class="card"><div class="icon">◎</div><h3>人机有界</h3><p>AI 可以辅助整理、分析和生成；关键判断、审批和最终责任由授权人员承担。</p></article>
+        <article class="card"><div class="icon">▤</div><h3>结果可核验</h3><p>通过真实样本、人工复核、前后对比和实际使用反馈，判断是否值得继续投入。</p></article>
+      </div>
+      <div class="resultLegend">
+        <div class="legend"><span class="dot ok"></span> 达标：继续复制</div>
+        <div class="legend"><span class="dot warn"></span> 待改进：限期优化</div>
+        <div class="legend"><span class="dot stop"></span> 无价值：及时停止</div>
+      </div>
+    </div>
+  </section>
 
-    <section id="status"><div class="wrap"><div class="section-head"><div><div class="kicker">09 / 当前状态</div><h2>我们已经有什么，还需要什么</h2></div><p>重点不是继续堆功能，而是把产品契约、交付方法和核心团队共识统一起来。</p></div><div class="status"><div class="panel status-panel"><h3><span class="status-dot"></span>已经具备</h3><div class="checklist"><div class="check">Relaysol 产品雏形与四个核心入口</div><div class="check">对话历史、数字资产框架与用户旅程</div><div class="check">账号、安全、会话、文件、OCR、语音与关系网底座</div><div class="check">两个企业应用方案正在推进</div><div class="check">个人标品 + 企业陪跑 + 标品沉淀的业务结构</div></div></div><div class="panel status-panel need"><h3><span class="status-dot" style="background:var(--orange);box-shadow:0 0 0 6px rgba(255,184,108,.1)"></span>还需要补齐</h3><div class="checklist"><div class="check">创始团队对使命、业务结构和主航道形成 70%—80% 以上共识</div><div class="check">把企业陪跑交付流程沉淀成可复制的方法论</div><div class="check">拿到真实案例、结果证据和标准化产品雏形</div><div class="check">统一产品文案、权益、交付边界与验收门槛</div><div class="check">根据业务验证结果，再决定技术伙伴与岗位扩充节奏</div></div></div></div></div></section>
+  <section>
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">06 / FAQ</div>
+          <h2>客户最常问的几个问题</h2>
+        </div>
+        <p>先把合作方式讲清楚，比“看上去很先进”更重要。</p>
+      </div>
+      <div class="grid g2">
+        <div class="faq open">
+          <button onclick="toggle(this)"><span>是不是一定要先上系统？</span><span>−</span></button>
+          <p>不一定。很多时候第一步不是上系统，而是先做经营诊断、流程梳理和场景选择。</p>
+        </div>
+        <div class="faq">
+          <button onclick="toggle(this)"><span>你们是卖工具，还是做咨询？</span><span>＋</span></button>
+          <p>我们不只给建议，也会和业务团队一起把方案做出来、验证清楚。</p>
+        </div>
+        <div class="faq">
+          <button onclick="toggle(this)"><span>如果试点失败怎么办？</span><span>＋</span></button>
+          <p>失败也是结果。我们会把原因说清楚：是问题不真、条件不够、场景不对，还是方案需要调整，然后决定优化或停止。</p>
+        </div>
+        <div class="faq">
+          <button onclick="toggle(this)"><span>怎么开始合作最合适？</span><span>＋</span></button>
+          <p>建议从一个真实、反复发生、对经营有影响的问题开始，先做一次诊断与场景讨论。</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="founder"><div class="wrap"><div class="section-head"><div><div class="kicker">10 / 创始合伙人对齐</div><h2>先确认愿不愿意一起做，再确认怎么一起做</h2></div><p>本次沟通是双向选择，不是单方面招人。我们要先把事业讲透，再共同判断投入意愿、能力边界与角色匹配。</p></div><div class="founder"><div class="panel"><div class="stage"><div class="stage-no">01</div><div><h3>意愿层面的确认</h3><p>是否认可项目使命、业务结构和长期主航道，愿意把 AI 创业从“备用选项”提升为真正值得投入的事业。</p></div></div><div class="stage"><div class="stage-no">02</div><div><h3>能力层面的核验</h3><p>在认可项目的前提下，再确认最适合发挥什么能力、承担什么责任，以及能力边界是否匹配关键岗位。</p></div></div><div class="stage"><div class="stage-no">03</div><div><h3>投入层面的约定</h3><p>不要求第一次沟通就把所有执行细节定死，但需要对时间、优先级和共同推进方式形成基本约定。</p></div></div></div><div class="decision"><div class="tag">给核心伙伴的三项决定</div><h3>如果这是新的主航道，我们一起把它走通。</h3><p>当前最紧迫的不是招募更多技术合伙人，而是让核心创始团队先形成足够深的认知与凝聚力。</p><div class="decision-list"><div><b>1</b><span>是否认同这项事业的使命与长期价值</span></div><div><b>2</b><span>是否愿意把主要精力逐步投入 AI 创业项目</span></div><div><b>3</b><span>是否愿意在真实案例中共同承担结果</span></div></div></div></div></div></section>
+  <section class="cta">
+    <div class="wrap">
+      <div class="kicker">LET'S START WITH A REAL PROBLEM</div>
+      <h2>从一个真实问题开始，<br>一起判断 AI 值不值得做。</h2>
+      <p>如果你正在考虑企业 AI 转型，或有一个反复发生、影响经营结果的具体问题，可以先从一次业务诊断与场景讨论开始。我们会一起判断：先做什么、怎么做、如何验收。</p>
+      <div class="actions">
+        <button class="btn" onclick="sharePage()">分享这份介绍 ↗</button>
+        <button class="btn ghost" onclick="window.print()">打印 / 另存为 PDF</button>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <section><div class="wrap"><div class="section-head"><div><div class="kicker">11 / 下一步</div><h2>本周只做一件最重要的事</h2></div><p>在 2026 年 9 月 11 日的深度沟通中，先完成项目全景信息的充分消化，再自然进入角色和动作讨论。</p></div><div class="grid-3"><div class="panel"><div class="tag">阅读前</div><h3>先看全景</h3><p>理解使命、三层业务结构、商业路径和阶段价值，不急于跳到技术细节。</p></div><div class="panel"><div class="tag">沟通中</div><h3>再做判断</h3><p>围绕“我是否愿意进入这件事”展开双向交流，确认认知、意愿和投入边界。</p></div><div class="panel"><div class="tag">沟通后</div><h3>自然定角色</h3><p>当项目全貌真正掌握后，再由每个人根据主观能动性明确自己的定位和下一步。</p></div></div><div style="margin-top:22px" class="decision"><h3>我们要共同做成的，不是一个功能，而是一条能持续创造价值的主航道。</h3><p>栖城焱邦 · Relaysol 接力脑</p><a class="btn primary" href="#top">回到开头</a></div></div></section>
+<footer>
+  <div class="wrap foot">
+    <span>栖城焱邦 · QICHENG YANBANG</span>
+    <span>用 AI 点亮真实的可能 · 人是主体，AI 放大人</span>
+    <span>本页面展示阶段性实践，具体成果以项目验收证据为准。</span>
+  </div>
+</footer>
 
-    <section><div class="wrap"><div class="section-head"><div><div class="kicker">APPENDIX / 参考资料</div><h2>产品与技术细节，放在这里继续看</h2></div><p>如果已经完成事业层面的对齐，再深入了解产品体验、技术底座与路线图。</p></div><div class="appendix"><div class="accordion"><button type="button"><span>Relaysol 产品如何工作</span><span>＋</span></button><div class="body">从一句话输入开始，系统识别真实问题，自动匹配不同视角，推动一个可执行的下一步，并在用户确认后沉淀为可调用的数字资产。</div></div><div class="accordion"><button type="button"><span>数字资产包含什么</span><span>＋</span></button><div class="body">包括画像、决策、关系、商业、项目、知识、心流与承诺。原则是：AI 只提炼草稿，用户确认后才进入资产。</div></div><div class="accordion"><button type="button"><span>技术底座保留什么</span><span>＋</span></button><div class="body">账号、安全、会话、文件、OCR、语音、关系网、用户隔离与数据保护等底座能力，复杂能力放在后台，简单体验留给用户。</div></div><div class="accordion"><button type="button"><span>为什么不先堆功能</span><span>＋</span></button><div class="body">当前最重要的是统一产品契约、跑通真实交付、拿到可复用结果，再根据验证结果决定开发顺序和技术投入。</div></div></div></div></section>
-  </main>
-  <footer><div class="wrap footer-row"><div><span class="footer-brand">栖城焱邦</span> · Relaysol 接力脑</div><div>创始合伙人对齐材料 · 2026 年 9 月</div></div></footer>
-  <script>
-    const links=[...document.querySelectorAll('.nav a[href^="#"]')];
-    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-35% 0px -55% 0px',threshold:0}); sections.forEach(s=>io.observe(s));
-    document.querySelectorAll('.accordion button').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
-  </script>
+<div class="toast" id="toast">链接已复制</div>
+
+<script>
+function toggle(el){
+  const box = el.parentElement;
+  box.classList.toggle('open');
+  const sign = el.querySelector('span:last-child');
+  if(sign){ sign.textContent = box.classList.contains('open') ? '−' : '＋'; }
+}
+document.querySelectorAll('.filter').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    const key = btn.dataset.filter;
+    document.querySelectorAll('.case').forEach(card=>{
+      const show = key==='all' || card.dataset.cat===key;
+      card.classList.toggle('hidden', !show);
+    });
+  });
+});
+async function sharePage(){
+  const url = location.href;
+  if(navigator.share){
+    try{ await navigator.share({title:document.title,text:'栖城焱邦｜把 AI 用进真实业务',url}); return; }catch(e){}
+  }
+  if(navigator.clipboard && url.startsWith('http')){
+    try{ await navigator.clipboard.writeText(url); showToast(); return; }catch(e){}
+  }
+  window.print();
+}
+function showToast(){
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1600);
+}
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
